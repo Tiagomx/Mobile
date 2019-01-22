@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
     borderColor: '#C5C5C5',
   },
   cell: {
-    fontSize: 30,
-    paddingLeft: 40,
+    fontSize: 25,
+    paddingLeft: 25,
     paddingTop: 70,
     // borderWidth: 1,
   },
