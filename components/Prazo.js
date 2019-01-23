@@ -23,7 +23,7 @@ export default class Prazo extends React.Component {
 
   componentDidMount() {
     return fetch(
-      'https://mobile-5367c.firebaseio.com/Vendas_Super_Villa_SomaTotal/6/.json'
+      'https://mobile-5367c.firebaseio.com/VENDA_SUPER_VILLA/8/.json'
     )
       .then(response => response.json())
       .then(responseJson => {

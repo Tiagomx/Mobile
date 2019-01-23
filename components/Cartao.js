@@ -14,7 +14,7 @@ constructor(props) {
     }
 
         componentDidMount() {
-        return fetch('https://mobile-5367c.firebaseio.com/Vendas_Super_Villa_SomaTotal/4/.json')
+        return fetch('https://mobile-5367c.firebaseio.com/VENDA_SUPER_VILLA/6/.json')
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({

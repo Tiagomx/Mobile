@@ -24,7 +24,7 @@ export default class TotalCartao extends React.Component {
 
   componentDidMount() {
     return fetch(
-      'https://mobile-5367c.firebaseio.com/Vendas_Super_Villa_SomaTotal/1/.json'
+      'https://mobile-5367c.firebaseio.com/Vendas_Super_Villa_SomaTotal/3/.json'
     )
       .then(response => response.json())
       .then(responseJson => {

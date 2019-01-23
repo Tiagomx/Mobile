@@ -8,11 +8,11 @@
       "ios",
       "android"
     ],
-    "android":{
-      "package":"com.tiagomx.FSync",
-       "versionCode":1 , 
-       "icon":"./assets/images/icon.png"
-           },
+    "android": {
+      "package": "com.tiagomx.FSync",
+      "versionCode": 1,
+      "icon": "./assets/images/icon.png"
+    },
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

@@ -24,7 +24,7 @@ export default class TotalGeral extends React.Component {
 
   componentDidMount() {
     return fetch(
-      'https://mobile-5367c.firebaseio.com/Vendas_Super_Villa_SomaTotal/2/.json'
+      'https://mobile-5367c.firebaseio.com/VENDA_SUPER_VILLA/4/.json'
     )
       .then(response => response.json())
       .then(responseJson => {
