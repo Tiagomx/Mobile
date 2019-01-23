@@ -47,19 +47,22 @@ constructor(props) {
                         refreshing={this.state.refreshing}
                         componentDidMount={this.componentDidMount()} />
                 }>
-                <List>
-                <FlatList
-                    data={this.state.relatorio}
-                    renderItem={({ item }) => (
-                            <ListItem
+            <FlatList
+            data={this.state.relatorio}
+            renderItem={({ item }) => (
+              <ListItem        
                 hideChevron
-                title={`           Caixa: ${item.CAIXA}             -            R$ ${item.TOTAL_MOVIMENTAÇÃO}               `}
-                                     
-              />                         
-                    )}
-                    keyExtractor={item =>  item.CAIXA} 
-                    />
-                </List>
+                title={`Caixa: ${item.CAIXA} `}
+                titleStyle={{color: 'black',fontSize: 15,}}
+                rightTitle={` R$ ${item.TOTAL_MOVIMENTAÇÃO} `}
+                rightTitleStyle={{
+                  fontSize: 15,
+                  color: '#B3B6B7',
+                }}                 
+              />
+            )}
+            keyExtractor={item => item.CAIXA}
+          />
                 
             </ScrollView>           
         );

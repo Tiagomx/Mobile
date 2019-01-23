@@ -6,6 +6,11 @@ import DinheiroView from './components/Dinheiro';
 import CartaoView from './components/Cartao';
 import PrazoView from './components/Prazo';
 import TotalGeralView from './components/TotalGeral';
+import TotalDinheiroView from './components/TotalDinheiro';
+import TotalCartaoView from './components/TotalCartao';
+import TotalPrazoView from './components/TotalPrazo';
+import DataHoraView from './components/DataHora';
+import EmpresaView from './components/Empresa';
 import { Card } from 'react-native-paper';
 import Expo from 'expo';
 
@@ -37,7 +42,13 @@ export default class TabViewExample extends React.Component {
 
   render() {
     return (
+      
       <View style={[styles.container]}>
+        <EmpresaView styles={[styles]} />
+        <DataHoraView styles={[styles.paragraph]} />
+        <TotalDinheiroView styles={[styles.paragraph]}/>
+        <TotalCartaoView styles={[styles.paragraph]} />
+        <TotalPrazoView styles={[styles.paragraph]}/>
         <TotalGeralView styles={[styles.paragraph]} />
         <TabView
           navigationState={this.state}
@@ -59,10 +70,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   paragraph: {
-    margin: 24,
-    marginTop: 0,
+   // margin: 0,
+    //marginTop: 0,
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: '',
     textAlign: 'center',
   },
 });

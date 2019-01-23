@@ -59,19 +59,22 @@ export default class Dinheiro extends React.Component {
             componentDidMount={this.componentDidMount()}
           />
         }>
-        <List>
-          <FlatList
+         <FlatList
             data={this.state.relatorio}
             renderItem={({ item }) => (
-              <ListItem
+              <ListItem        
                 hideChevron
-                title={`           Caixa: ${item.CAIXA}             -            R$ ${item.TOTAL_MOVIMENTAÇÃO}               `}
-                                     
+                title={`Caixa: ${item.CAIXA} `}
+                titleStyle={{color: 'black',fontSize: 15,}}
+                rightTitle={` R$ ${item.TOTAL_MOVIMENTAÇÃO} `}
+                rightTitleStyle={{
+                  fontSize: 15,
+                  color: '#B3B6B7',
+                }}                 
               />
             )}
             keyExtractor={item => item.CAIXA}
           />
-        </List>
       </ScrollView>
     );
   }

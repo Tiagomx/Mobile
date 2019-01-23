@@ -45,47 +45,46 @@ export default class TotalGeral extends React.Component {
   render() {
     if (this.state.isLoading || this.state.refreshing) {
       return (
-        <ScrollView style={{ flex: 1, padding: 20 }}>
+        <View style={{ flex: 1}}>
           <ActivityIndicator />
-        </ScrollView>
+        </View>
       );
     }
 
     return (
-      <ScrollView
-        style={{ flex: 1, paddingTop: 20 }}
+      <View
+       // style={{ flex: 1, paddingTop: 0 }}
         refreshControl={
           <RefreshControl
             refreshing={this.state.refreshing}
             componentDidMount={this.componentDidMount()}
           />
         }>
-        <List>
-          <FlatList
-            style={styles.line}
-            data={this.state.relatorio}
-            renderItem={({ item }) => (
-              <Text style={[styles.cell, styles.content]}>{item}</Text>
-            )}
-            // keyExtractor={item =>  item}
-          />
-        </List>
-      </ScrollView>
+        <FlatList
+          style={styles.line}
+          data={this.state.relatorio}
+          renderItem={({ item }) => (
+            <Text style={[styles.cell, styles.content]}>{item}</Text>
+          )}
+        />
+          
+        
+      </View>
     );
   }
 }
 const styles = StyleSheet.create({
   line: {
     flexDirection: 'row',
-    paddingTop: 100,
-    paddingBottom: 3,
-    borderWidth: 1,
-    borderColor: '#C5C5C5',
+    //paddingTop: 50,
+   // paddingBottom: 0,
+    borderWidth: 0,
+    borderColor: '#FFFF',
   },
   cell: {
     fontSize: 25,
     paddingLeft: 25,
-    paddingTop: 70,
+   // paddingTop: 20,
     // borderWidth: 1,
   },
 });
