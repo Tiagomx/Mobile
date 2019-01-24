@@ -66,9 +66,7 @@ export default class TotalGeral extends React.Component {
           renderItem={({ item }) => (
             <Text style={[styles.cell, styles.content]}>{item}</Text>
           )}
-        />
-          
-        
+        />                  
       </View>
     );
   }
@@ -82,9 +80,10 @@ const styles = StyleSheet.create({
     borderColor: '#FFFF',
   },
   cell: {
-    fontSize: 25,
+    fontSize: 20,
+    color: 'grey',
     paddingLeft: 25,
-   // paddingTop: 20,
+   paddingTop: 20,
     // borderWidth: 1,
   },
 });

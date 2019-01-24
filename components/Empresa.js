@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFF',
   },
   cell: {
-    fontSize: 25,
+    fontSize: 20,
     paddingLeft: 25,
    // paddingTop: 20,
     // borderWidth: 1,

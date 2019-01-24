@@ -82,9 +82,10 @@ const styles = StyleSheet.create({
     borderColor: '#FFFF',
   },
   cell: {
-    fontSize: 25,
+    fontSize: 15,
     paddingLeft: 25,
-   // paddingTop: 20,
+    color: 'grey',
+    paddingTop: 10,
     // borderWidth: 1,
   },
 });
