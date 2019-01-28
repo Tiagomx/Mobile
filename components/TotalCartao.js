@@ -76,16 +76,12 @@ export default class TotalCartao extends React.Component {
 const styles = StyleSheet.create({
   line: {
     flexDirection: 'row',
-    //paddingTop: 50,
-   // paddingBottom: 0,
     borderWidth: 0,
     borderColor: '#FFFF',
   },
   cell: {
-    fontSize: 20,
+    fontSize: 15,
     color: 'grey',
     paddingLeft: 25,
-    paddingTop: 20,
-    // borderWidth: 1,
   },
 });

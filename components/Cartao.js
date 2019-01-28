@@ -50,14 +50,14 @@ constructor(props) {
             <FlatList
             data={this.state.relatorio}
             renderItem={({ item }) => (
-              <ListItem        
+              <ListItem     containerStyle={{ borderBottomColor: 'white' }}     
                 hideChevron
                 title={`Caixa: ${item.CAIXA} `}
-                titleStyle={{color: 'black',fontSize: 15,}}
+                titleStyle={{color: 'black',fontSize: 15,color: 'grey'}}
                 rightTitle={` R$ ${item.TOTAL_MOVIMENTAÇÃO} `}
                 rightTitleStyle={{
                   fontSize: 15,
-                  color: '#B3B6B7',
+                  color: 'grey',
                 }}                 
               />
             )}
