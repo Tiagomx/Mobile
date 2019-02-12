@@ -1,7 +1,21 @@
-import * as React from 'react';
+import React from 'react';
 
-import { Text, Animated, TouchableOpacity, View, StyleSheet, Dimensions } from 'react-native';
-import {TabViewAnimated, TabView, TabBar, SceneMap } from 'react-native-tab-view';
+import { 
+    Text, 
+    Animated,
+    Image, 
+    TouchableOpacity, 
+    View,
+    StyleSheet, 
+    Dimensions 
+} from 'react-native';
+
+import {
+  TabViewAnimated,
+   TabView, 
+   TabBar, 
+   SceneMap 
+  } from 'react-native-tab-view';
 import DinheiroView from './components/Dinheiro';
 import CartaoView from './components/Cartao';
 import PrazoView from './components/Prazo';
@@ -11,9 +25,7 @@ import TotalCartaoView from './components/TotalCartao';
 import TotalPrazoView from './components/TotalPrazo';
 import DataHoraView from './components/DataHora';
 import EmpresaView from './components/Empresa';
-import FontAwesome, { Icons } from 'react-native-fontawesome';
 import { Constants } from 'expo';
-
 
 
 
@@ -41,45 +53,46 @@ const RotaTab3 = () => (
   </View>
 );
 
-export default class TabViewExample extends React.Component {
+const iconeDinheiro = require('./assets/images/Dinheiro.png');
+const iconeCartao = require('./assets/images/Cartao.png');
+const iconePrazo = require('./assets/images/Prazo.png');
+
+export default class App extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: 'tab1', title:'Dinheiro', tabStyle: { backgroundColor: 'white' } },
-      { key: 'tab2', title:'Cartão' , tabStyle: { backgroundColor: 'white' } },
-      { key: 'tab3', title:'Prazo'  , tabStyle: { backgroundColor: 'white' } },
-    ],
+      { key: 'tab1', title:'Dinheiro'},
+      { key: 'tab2', title:'Cartão' },
+      { key: 'tab3', title:'Prazo'},
+    ],    
   };
 
-  _handleIndexChange = index => this.setState({ index });
-
-  _renderHeader = () => {
-      return <TabBar renderLabel={this._renderLabel} />
-    }
-
   _renderTabBar = props => {
-      const inputRange = props.navigationState.routes.map((x, i) => i);
-  
-      return (
-        <View style={styles.tabBar}>
-          {props.navigationState.routes.map((route, i) => {
-            const color = props.position.interpolate({
-              inputRange,
-              outputRange: inputRange.map(
-                inputIndex => (inputIndex === i ? '#FFF' : '#222')
-              ),
-            });
-            return (
-              <TouchableOpacity
-                style={styles.tabItem}
-                onPress={() => this.setState({ index: i })}>
-                <Animated.Text style={{ color }}>{route.title}</Animated.Text>
-              </TouchableOpacity>
-            );
-          })}
-        </View>
-      );
-    };
+    const inputRange = props.navigationState.routes.map((x, i) => i);
+ 
+    return (
+      <View style={styles.tabBar}>
+        {props.navigationState.routes.map((key, i) => {
+          const color = props.position.interpolate({
+            inputRange,
+            outputRange: inputRange.map(
+              inputIndex => (inputIndex === i ? '#13E442' : '#e6f1f1')
+            ),            
+          });
+          return (
+            <TouchableOpacity
+              style={[styles.tabItem, {backgroundColor: '#FFF' }]}
+              onPress={() => this.setState({ index: i })}>
+              <Image style={styles.iconTab} source={ key.title === 'Dinheiro' ? 
+                                         iconeDinheiro:key.title === 'Cartão' ? 
+              iconeCartao:iconePrazo } />
+              <Animated.Text style={[{color}]}></Animated.Text>                            
+            </TouchableOpacity>          
+          );
+        })}
+      </View>
+    );
+  };
     
 
     _renderScene = SceneMap({
@@ -88,23 +101,22 @@ export default class TabViewExample extends React.Component {
       tab3: RotaTab3,
     });
 
-  render() {
-    return (
-      
-      <View style={[styles.container, styles.content]}>
-        <EmpresaView styles={[styles]} />
-        <DataHoraView styles={[styles.paragraph]} />                      
-        <TotalGeralView/>
-        <TabView 
+    render() {
+      return (
+        <View style={[styles.container, styles.content]}>
+        <EmpresaView styles={[styles.paragraph]} />
+        <DataHoraView styles={[styles.paragraph]} />
+        <TotalGeralView/>     
+        <TabView
           navigationState={this.state}
           renderScene={this._renderScene}
           renderTabBar={this._renderTabBar}
-          onIndexChange={this._handleIndexChange}
+          onIndexChange={index => this.setState({ index })}
         />
-      </View>
-    );
+        </View>
+      );
+    }
   }
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -113,11 +125,20 @@ const styles = StyleSheet.create({
   tabBar: {
     flexDirection: 'row',
     paddingTop: Constants.statusBarHeight,
+    paddingTop: 30,
   },
   tabItem: {
     flex: 1,
     alignItems: 'center',
-    padding: 16,
-    backgroundColor: '#32326a'
+    backgroundColor: '#32326a',
+    borderBottomWidth: 1.5,
+    borderBottomColor: '#222',
+  },
+  iconTab: {
+    paddingTop: 16,
+    margin: 2,
+    width: 32,
+    justifyContent: 'center',
+    height: 32,
   },
 });

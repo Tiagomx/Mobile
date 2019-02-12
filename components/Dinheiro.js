@@ -2,6 +2,7 @@ import React from 'react';
 import {
   StyleSheet,
   ListView,
+  View,
   FlatList,
   ActivityIndicator,
   Text,
@@ -9,7 +10,23 @@ import {
   ScrollView,
 } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
-import Expo from 'expo';
+import {AccordionList} from "accordion-collapse-react-native";
+import { Container, Header, Content, Accordion,Separator  } from "native-base";
+
+import * as Font from 'expo-font';
+
+this.state={
+  list:[
+      {
+        title: 'Getting Started',
+        body: 'React native Accordion/Collapse component, very good to use in toggles & show/hide content'
+      },
+      {
+        title: 'Components',
+        body: 'AccordionList,Collapse,CollapseHeader & CollapseBody'
+      }
+      ],
+}
 
 export default class Dinheiro extends React.Component {
   constructor(props) {
@@ -18,8 +35,31 @@ export default class Dinheiro extends React.Component {
       isLoading: true,
       refreshing: true,
       relatorio: [],
+      //collapsed:false,
     };
   }
+
+
+
+  
+
+
+  _head(item){
+    return(
+        <Separator bordered style={{alignItems:'center'}}>
+          <Text>{item.title}</Text>
+        </Separator>
+    );
+}
+
+_body(item){
+    return (
+        <View style={{padding:10}}>
+          <Text style={{textAlign:'center'}}>{item.body}</Text>
+        </View>
+    );
+}
+
 
   componentDidMount() {
     return fetch(
@@ -41,6 +81,7 @@ export default class Dinheiro extends React.Component {
       });
   }
 
+
   render() {
     if (this.state.isLoading || this.state.refreshing) {
       return (
@@ -59,22 +100,11 @@ export default class Dinheiro extends React.Component {
             componentDidMount={this.componentDidMount()}
           />
         }>
-         <FlatList
-            data={this.state.relatorio}
-            renderItem={({ item }) => (
-              <ListItem   containerStyle={{ borderBottomColor: 'white' }}       
-                hideChevron
-                title={`Caixa: ${item.CAIXA} `}
-                titleStyle={{color: 'black',fontSize: 15,color: 'grey'}}
-                rightTitle={` R$ ${item.TOTAL_MOVIMENTAÇÃO} `}
-                rightTitleStyle={{
-                  fontSize: 15,
-                  color: 'grey',
-                }}                 
-              />
-            )}
-            keyExtractor={item => item.CAIXA}
-          />
+     <AccordionList
+            list={this.state.relatorio}
+            header={this._head}
+            body={this._body}
+          /> 
       </ScrollView>
     );
   }

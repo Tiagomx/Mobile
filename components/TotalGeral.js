@@ -9,7 +9,7 @@ import {
   RefreshControl,
   ScrollView,
 } from 'react-native';
-import { List, ListItem } from 'react-native-elements';
+//import { List, ListItem } from 'react-native-elements';
 
 export default class TotalGeral extends React.Component {
   constructor(props) {
